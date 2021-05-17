@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<title>Odliczanie Daty</title>
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<script type="text/javascript">
+
+    function odliczanie()
+	{
+		var dzisiaj = new Date();
+		
+		var dzien = dzisiaj.getDate();
+		var miesiac = dzisiaj.getMonth()+1;
+		var rok = dzisiaj.getFullYear();
+
+		document.getElementById("zegar").innerHTML ="Dzisiejsza data: "+dzien+"/"+miesiac+"/"+rok;
+		 
+		setTimeout("odliczanie();",1000);
+	}
+
+    function rok()
+    {
+        var dzisiaj = new Date();
+		
+		var dzien = dzisiaj.getDate();
+		var miesiac = dzisiaj.getMonth()+1;
+		var rok = dzisiaj.getFullYear();
+
+		document.getElementById("kalendarz").innerHTML ="Data do której odliczamy liczbe dni: "+"31"+"/"+"12"+"/"+rok;
+		 
+		setTimeout("rok();",1000);
+    }
+
+    function obliczanie()
+    {
+        var dzisiaj = new Date();
+		
+		var dzien = dzisiaj.getDate();
+		var miesiac = dzisiaj.getMonth()+1;
+		var rok = dzisiaj.getFullYear();
+
+        var dni = 0;
+        if(miesiac==1) dni=0;
+        if(miesiac==2) dni=28;
+        if(miesiac==3) dni=59;
+        if(miesiac==4) dni=89;
+        if(miesiac==5) dni=120;
+        if(miesiac==6) dni=151;
+        if(miesiac==7) dni=181;
+        if(miesiac==8) dni=212;
+        if(miesiac==9) dni=242;
+        if(miesiac==10) dni=273;
+        if(miesiac==11) dni=303;
+        if(miesiac==12) dni=334;
+        var data = 365-(dni+dzien)
+		document.getElementById("ost").innerHTML = "Liczba dni do końca roku: "+data;
+		setTimeout("obliczanie();",1000);
+    }
+    </script>
+
+	<style>
+			body
+		{
+			background-color: #dcd3b6;
+			font-family: verdana;
+			font-size: 20px;
+			color: white;
+		}
+
+		.content
+		{
+			padding:15px;
+			color: black;
+			height:60px;
+			width:600px;
+		}
+	</style>
+</head>
+<body onload="odliczanie(),rok(),obliczanie()">
+
+	<div id="zegar" class="content"></div> 
+    <div id="kalendarz" class="content"></div> 
+    <div id="ost" class="content"></div> 
+</body>
+</html>
